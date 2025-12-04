@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const linuxController = require('../controller/NIRDController');
+const linuxController = require('../controller/NIRDController.js');
 const { default: NIRDCONTROLLER } = require('../controller/NIRDController.js');
 
 // Route principale
