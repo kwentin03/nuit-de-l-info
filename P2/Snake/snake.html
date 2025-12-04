@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="snake.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bienvenue sur mon site</h1>
+            <p class="subtitle">Développeur passionné par la création web</p>
+        </header>
+
+        <div class="content">
+            <h2>À propos</h2>
+            <p>Bonjour ! Je suis développeur web et j'adore créer des expériences interactives. 
+            Ce site contient peut-être quelques surprises... 🐍</p>
+            <p style="margin-top: 20px;">
+                <span class="snake-emoji" onclick="activateSnake()">🐍</span>
+                Cliquez sur le serpent si vous osez !
+            </p>
+        </div>
+
+        <div class="content">
+            <h2>Mes compétences</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>✓ HTML5 & CSS3</li>
+                <li>✓ JavaScript</li>
+                <li>✓ Développement de jeux cachés 🎮</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <!-- Hidden Snake Game -->
+    <div id="gameContainer">
+        <div id="score">Score: 0</div>
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+        <div id="gameOverText" class="game-over" style="display: none;">Game Over! Appuyez sur Espace pour rejouer</div>
+        <button id="closeGame" onclick="closeGame()">Fermer le jeu</button>
+    </div>
+
+    <script src="snake.js"></script>
+</body>
+</html>

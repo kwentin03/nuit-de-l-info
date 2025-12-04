@@ -1,0 +1,114 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .snake-emoji {
+            font-size: 2em;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            user-select: none;
+        }
+
+        .snake-emoji:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        /* Game styles */
+        #gameContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #gameContainer.active {
+            display: flex;
+        }
+
+        #snakeCanvas {
+            border: 3px solid #4CAF50;
+            background: #000;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+
+        #score {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #closeGame {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #closeGame:hover {
+            background: #d32f2f;
+        }
+
+        .game-over {
+            color: #ff5252;
+            font-size: 20px;
+            margin-top: 10px;
+        }
