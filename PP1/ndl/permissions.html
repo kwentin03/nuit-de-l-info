@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permissions - Activités pratiques</title>
+    <link rel="stylesheet" href="./public/stylepermission.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Permissions Linux</h1>
+        <p class="subtitle">Apprenez à contrôler l'accès aux fichiers et dossiers</p>
+        
+        <div class="info-box">
+            <h3>💡 Pourquoi les permissions ?</h3>
+            <p>Linux est un système multi-utilisateurs. Les permissions permettent de contrôler qui peut lire, écrire ou exécuter un fichier. C'est essentiel pour la sécurité et l'organisation !</p>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">1</span> Les trois types de permissions</h3>
+            
+            <div class="permission-box">
+                <div class="permission-item">
+                    <div class="permission-letter">r</div>
+                    <h4>READ</h4>
+                    <p>Lecture</p>
+                    <p style="color: #666; margin-top: 10px;">Permet de lire le contenu d'un fichier</p>
+                </div>
+                
+                <div class="permission-item">
+                    <div class="permission-letter">w</div>
+                    <h4>WRITE</h4>
+                    <p>Écriture</p>
+                    <p style="color: #666; margin-top: 10px;">Permet de modifier ou supprimer un fichier</p>
+                </div>
+                
+                <div class="permission-item">
+                    <div class="permission-letter">x</div>
+                    <h4>EXECUTE</h4>
+                    <p>Exécution</p>
+                    <p style="color: #666; margin-top: 10px;">Permet d'exécuter un programme</p>
+                </div>
+            </div>
+            
+            <div class="permission-visual">
+-rwxr-xr--  fichier.txt<br>
+ │││ │││ │││<br>
+ │││ │││ └─┴─→ Autres (r--) : lecture seulement<br>
+ │││ └─┴──────→ Groupe (r-x) : lecture et exécution<br>
+ └─┴──────────→ Propriétaire (rwx) : tous les droits<br>
+            </div>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">2</span> Les trois catégories d'utilisateurs</h3>
+            
+            <table class="owner-group-table">
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Symbole</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><strong>👤 Propriétaire</strong></td>
+                    <td><code>u</code> (user)</td>
+                    <td>La personne qui a créé le fichier</td>
+                </tr>
+                <tr>
+                    <td><strong>👥 Groupe</strong></td>
+                    <td><code>g</code> (group)</td>
+                    <td>Un groupe d'utilisateurs spécifique</td>
+                </tr>
+                <tr>
+                    <td><strong>🌍 Autres</strong></td>
+                    <td><code>o</code> (others)</td>
+                    <td>Tous les autres utilisateurs du système</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">3</span> Calculateur de permissions</h3>
+            <p style="margin-bottom: 15px;">Sélectionnez les permissions pour chaque catégorie :</p>
+            
+            <div class="calculator">
+                <div class="calc-row">
+                    <div class="calc-label">👤 Propriétaire</div>
+                    <div class="calc-checkboxes">
+                        <label><input type="checkbox" id="u-r" onchange="updateCalc()"> Lecture (r)</label>
+                        <label><input type="checkbox" id="u-w" onchange="updateCalc()"> Écriture (w)</label>
+                        <label><input type="checkbox" id="u-x" onchange="updateCalc()"> Exécution (x)</label>
+                    </div>
+                </div>
+                
+                <div class="calc-row">
+                    <div class="calc-label">👥 Groupe</div>
+                    <div class="calc-checkboxes">
+                        <label><input type="checkbox" id="g-r" onchange="updateCalc()"> Lecture (r)</label>
+                        <label><input type="checkbox" id="g-w" onchange="updateCalc()"> Écriture (w)</label>
+                        <label><input type="checkbox" id="g-x" onchange="updateCalc()"> Exécution (x)</label>
+                    </div>
+                </div>
+                
+                <div class="calc-row">
+                    <div class="calc-label">🌍 Autres</div>
+                    <div class="calc-checkboxes">
+                        <label><input type="checkbox" id="o-r" onchange="updateCalc()"> Lecture (r)</label>
+                        <label><input type="checkbox" id="o-w" onchange="updateCalc()"> Écriture (w)</label>
+                        <label><input type="checkbox" id="o-x" onchange="updateCalc()"> Exécution (x)</label>
+                    </div>
+                </div>
+                
+                <div class="calc-result">
+                    <div>Format symbolique : <span id="symbolic">---------</span></div>
+                    <div style="margin-top: 10px;">Format numérique : <span id="numeric">000</span></div>
+                    <div style="margin-top: 10px; font-size: 0.8em; color: #aaa;">Commande chmod : chmod <span id="chmodCmd">000</span> fichier</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">4</span> Quiz : Interprétez les permissions</h3>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <div class="terminal" style="margin-bottom: 15px;">
+-rw-r--r--  1 alice  users  2048  Dec 4 10:30  document.txt
+                </div>
+                <p><strong>Question : Qui peut modifier ce fichier ?</strong></p>
+                <div class="quiz-option" onclick="checkQuiz(1, 'a')">
+                    <input type="radio" name="q1" value="a"> Seulement alice (le propriétaire)
+                </div>
+                <div class="quiz-option" onclick="checkQuiz(1, 'b')">
+                    <input type="radio" name="q1" value="b"> Le groupe users
+                </div>
+                <div class="quiz-option" onclick="checkQuiz(1, 'c')">
+                    <input type="radio" name="q1" value="c"> Tout le monde
+                </div>
+                <div id="result1" class="result"></div>
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>Question : Quelle commande donne tous les droits au propriétaire uniquement ?</strong></p>
+                <div class="quiz-option" onclick="checkQuiz(2, 'c')">
+                    <input type="radio" name="q2" value="a"> chmod 777 fichier
+                </div>
+                <div class="quiz-option" onclick="checkQuiz(2, 'c')">
+                    <input type="radio" name="q2" value="b"> chmod 666 fichier
+                </div>
+                <div class="quiz-option" onclick="checkQuiz(2, 'c')">
+                    <input type="radio" name="q2" value="c"> chmod 700 fichier
+                </div>
+                <div id="result2" class="result"></div>
+            </div>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">5</span> Commandes utiles</h3>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <h4 style="color: #fa709a; margin-bottom: 10px;">📝 chmod - Changer les permissions</h4>
+                <div class="terminal">
+<span style="color: #4fc3f7;">alice@linux:~$</span> <span style="color: #ffeb3b;">chmod 755 script.sh</span><br>
+<span style="color: #4fc3f7;">alice@linux:~$</span> <span style="color: #ffeb3b;">chmod u+x programme</span><br>
+<span style="color: #4fc3f7;">alice@linux:~$</span> <span style="color: #ffeb3b;">chmod g-w fichier.txt</span>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <h4 style="color: #fa709a; margin-bottom: 10px;">👤 chown - Changer le propriétaire</h4>
+                <div class="terminal">
+<span style="color: #4fc3f7;">alice@linux:~$</span> <span style="color: #ffeb3b;">sudo chown bob fichier.txt</span><br>
+<span style="color: #4fc3f7;">alice@linux:~$</span> <span style="color: #ffeb3b;">sudo chown bob:admin fichier.txt</span>
+                </div>
+                <p style="margin-top: 10px; color: #666; font-size: 0.9em;">⚠️ Nécessite les droits administrateur (sudo)</p>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>🎯 Bravo !</h3>
+            <p>Vous comprenez maintenant les permissions Linux ! C'est un concept fondamental pour la sécurité de votre système.</p>
+            <p style="margin-top: 10px;"><strong>💡 Conseil :</strong> Les permissions 755 sont courantes pour les programmes, et 644 pour les fichiers texte.</p>
+        </div>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+    
+    <script>
+        function updateCalc() {
+            let symbolic = '';
+            let numeric = '';
+            
+            const categories = ['u', 'g', 'o'];
+            const permissions = ['r', 'w', 'x'];
+            
+            categories.forEach(cat => {
+                let value = 0;
+                let sym = '';
+                
+                permissions.forEach((perm, idx) => {
+                    const checked = document.getElementById(`${cat}-${perm}`).checked;
+                    if (checked) {
+                        value += [4, 2, 1][idx];
+                        sym += perm;
+                    } else {
+                        sym += '-';
+                    }
+                });
+                
+                symbolic += sym;
+                numeric += value;
+            });
+            
+            document.getElementById('symbolic').textContent = symbolic;
+            document.getElementById('numeric').textContent = numeric;
+            document.getElementById('chmodCmd').textContent = numeric;
+        }
+        
+        function checkQuiz(num, correct) {
+            const selected = document.querySelector(`input[name="q${num}"]:checked`);
+            const result = document.getElementById(`result${num}`);
+            
+            if (!selected) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez sélectionner une réponse';
+                return;
+            }
+            
+            if (num === 1) {
+                if (selected.value === correct) {
+                    result.className = 'result correct';
+                    result.textContent = '✅ Exact ! Seul le propriétaire (alice) a la permission d\'écriture (w).';
+                } else {
+                    result.className = 'result incorrect';
+                    result.textContent = '❌ Non. Regardez bien : rw- (proprio), r-- (groupe), r-- (autres). Seul le propriétaire a "w".';
+                }
+            } else if (num === 2) {
+                if (selected.value === correct) {
+                    result.className = 'result correct';
+                    result.textContent = '✅ Parfait ! 700 = rwx------ (tous les droits pour le propriétaire, rien pour les autres).';
+                } else {
+                    result.className = 'result incorrect';
+                    result.textContent = '❌ Non. 700 signifie 7 (rwx) pour le propriétaire, 0 (---) pour le groupe et 0 (---) pour les autres.';
+                }
+            }
+            
+            result.style.display = 'block';
+        }
+        
+        updateCalc();
+    </script>
+</body>
+</html>

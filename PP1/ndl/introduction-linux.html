@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction à Linux - Activités pratiques</title>
+    <link rel="stylesheet" href="./public/styleintroductionlinux.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐧 Introduction à Linux</h1>
+        <p class="subtitle">Découvrez le monde des logiciels libres à travers des activités interactives</p>
+        
+        <div class="info-box">
+            <h3>💡 Qu'est-ce que Linux ?</h3>
+            <p>Linux est un système d'exploitation libre et gratuit. Contrairement à Windows ou macOS, il est développé de manière collaborative par des milliers de contributeurs à travers le monde. Il existe sous différentes "distributions" comme Ubuntu, Fedora ou Debian.</p>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">1</span> Quiz : Testez vos connaissances</h3>
+            <div class="question">
+                <p><strong>Qu'est-ce qu'un logiciel libre ?</strong></p>
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    Un logiciel gratuit
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    Un logiciel dont le code source est accessible et modifiable
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    Un logiciel sans publicité
+                </label>
+                <button class="btn" onclick="checkAnswer1()">Vérifier</button>
+                <div id="result1" class="result"></div>
+            </div>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">2</span> Comparaison des systèmes</h3>
+            <div class="question">
+                <p><strong>Associez chaque caractéristique au bon système :</strong></p>
+                <p style="margin: 15px 0;">🔓 Gratuit et open source : <select id="sys1" style="padding: 8px; border-radius: 5px;">
+                    <option value="">Choisir...</option>
+                    <option value="linux">Linux</option>
+                    <option value="windows">Windows</option>
+                    <option value="macos">macOS</option>
+                </select></p>
+                <p style="margin: 15px 0;">💰 Nécessite une licence payante : <select id="sys2" style="padding: 8px; border-radius: 5px;">
+                    <option value="">Choisir...</option>
+                    <option value="linux">Linux</option>
+                    <option value="windows">Windows</option>
+                    <option value="macos">macOS</option>
+                </select></p>
+                <p style="margin: 15px 0;">🎨 Personnalisable à l'infini : <select id="sys3" style="padding: 8px; border-radius: 5px;">
+                    <option value="">Choisir...</option>
+                    <option value="linux">Linux</option>
+                    <option value="windows">Windows</option>
+                    <option value="macos">macOS</option>
+                </select></p>
+                <button class="btn" onclick="checkComparison()">Vérifier</button>
+                <div id="result2" class="result"></div>
+            </div>
+        </div>
+        
+        <div class="activity">
+            <h3><span class="activity-icon">3</span> Découverte des distributions</h3>
+            <div class="question">
+                <p><strong>Quelle distribution Linux choisiriez-vous pour débuter ?</strong></p>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        <strong>🟠 Ubuntu</strong> - La plus populaire pour les débutants, simple et bien documentée
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        <strong>🟢 Linux Mint</strong> - Interface familière pour ceux venant de Windows
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #e0e0e0;">
+                        <strong>🔵 Fedora</strong> - Technologies récentes et innovantes
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: #666;"><em>💡 Conseil : Pour débuter, Ubuntu ou Linux Mint sont recommandés !</em></p>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>🎯 Mission accomplie !</h3>
+            <p>Vous avez maintenant une meilleure compréhension de Linux et des logiciels libres. Prêt à explorer plus en profondeur ?</p>
+        </div>
+        
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+    
+    <script>
+        function checkAnswer1() {
+            const selected = document.querySelector('input[name="q1"]:checked');
+            const result = document.getElementById('result1');
+            
+            if (!selected) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez sélectionner une réponse';
+                return;
+            }
+            
+            if (selected.value === 'b') {
+                result.className = 'result correct';
+                result.textContent = '✅ Bravo ! Un logiciel libre permet d\'accéder, modifier et redistribuer le code source.';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = '❌ Pas tout à fait. Un logiciel libre concerne la liberté du code source, pas uniquement le prix.';
+            }
+            result.style.display = 'block';
+        }
+        
+        function checkComparison() {
+            const sys1 = document.getElementById('sys1').value;
+            const sys2 = document.getElementById('sys2').value;
+            const sys3 = document.getElementById('sys3').value;
+            const result = document.getElementById('result2');
+            
+            if (!sys1 || !sys2 || !sys3) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez compléter toutes les réponses';
+                return;
+            }
+            
+            if (sys1 === 'linux' && sys2 === 'windows' && sys3 === 'linux') {
+                result.className = 'result correct';
+                result.textContent = '✅ Excellent ! Linux est gratuit, open source et hautement personnalisable.';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = '❌ Réessayez ! Linux est gratuit et personnalisable, tandis que Windows nécessite une licence.';
+            }
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
