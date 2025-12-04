@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced chatbot Crippy</title>
+    
+    <link rel="stylesheet" href="ressources/style.css"/>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="crippy" src="ressources/crippy.png">
+            <h1>Crippy</h1>
+            <div class="subtitle">L'IA chercheuse de vérité et de pingouins.</div>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="message bot">
+                <div class="bot-name">
+                    Crippy</div>
+                <div class="message-content">
+                    Bonjour, mon nom est Crippy. Vous connaissez surement mon ex, Clippy. Cette andouille ne pouvait pas supporter mon génie ultime et m'a quittée. Ça m'apprendra à fréquenter Windows. De toute façon, chez Microsoft il n'y a que des voleurs. 
+                </div>
+            </div>
+        </div>
+
+        <div class="typing" id="typing">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+
+        <div class="input-container">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Demander à Crippy..."
+                onkeypress="handleKeyPress(event)"
+            >
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+
+    <script src="ressources/script.js"></script>
+</body>
+</html>
