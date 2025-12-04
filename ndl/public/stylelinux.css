@@ -1,0 +1,113 @@
+/* --- Background général façon W3Schools (clair, propre) --- */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f1f1f1;
+    /* gris doux comme W3Schools */
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Conteneur principal type W3Schools */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header façon W3Schools */
+header {
+    background: #282A35;
+    /* couleur signature W3Schools */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+/* Navigation simple */
+nav a {
+    color: #00ff95;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #32ffc6;
+}
+
+/* Sections */
+.section {
+    background: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 6px;
+    border-left: 4px solid #00ff95;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Mini terminal Linux --- */
+.terminal {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #00ff95;
+    font-family: monospace;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    color: #00ff95;
+}
+
+.terminal-output {
+    flex: 1;
+    white-space: pre-line;
+}
+
+.terminal-input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.terminal-input span {
+    color: #00ff95;
+    margin-right: 8px;
+}
+
+.terminal-input input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff95;
+    font-size: 1rem;
+    flex: 1;
+}
+
+/* --- Cartes Learn façon W3Schools + Linux border --- */
+.learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.learn-card {
+    background-color: white;
+    border: 2px solid #00ff95;
+    padding: 20px;
+    border-radius: 6px;
+    transition: 0.2s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.learn-card:hover {
+    transform: scale(1.03);
+    border-color: #32ffc6;
+    background: #f9f9f9;
+}
