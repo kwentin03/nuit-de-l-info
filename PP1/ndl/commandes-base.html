@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes de base - Activités pratiques</title>
+    <link rel="stylesheet" href="./public/commandesbase.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>⌨️ Commandes de base Linux</h1>
+        <p class="subtitle">Maîtrisez les commandes essentielles du terminal</p>
+
+        <div class="info-box">
+            <h3>💡 Le terminal, votre nouvel ami !</h3>
+            <p>Le terminal (ou console) permet de contrôler votre système avec des commandes textuelles. C'est plus
+                rapide et puissant qu'une interface graphique une fois que vous connaissez les commandes de base !</p>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">1</span> Les commandes essentielles</h3>
+
+            <div class="command-card">
+                <span class="command-name">ls</span>
+                <p><strong>Lister les fichiers</strong> - Affiche le contenu d'un dossier</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span
+                        class="terminal-command">ls</span><br>
+                    Documents Images Téléchargements Vidéos
+                </div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">cd</span>
+                <p><strong>Changer de dossier</strong> - Navigate dans l'arborescence</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span class="terminal-command">cd
+                        Documents</span><br>
+                    <span class="terminal-prompt">utilisateur@linux:~/Documents$</span>
+                </div>
+                <div class="hint">💡 Utilisez "cd .." pour remonter d'un niveau</div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">pwd</span>
+                <p><strong>Afficher le chemin actuel</strong> - Où suis-je ?</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~/Documents$</span> <span
+                        class="terminal-command">pwd</span><br>
+                    /home/utilisateur/Documents
+                </div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">mkdir</span>
+                <p><strong>Créer un dossier</strong> - Make directory</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span class="terminal-command">mkdir
+                        MonProjet</span>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">cp</span>
+                <p><strong>Copier un fichier</strong> - Copy</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span class="terminal-command">cp
+                        fichier.txt copie.txt</span>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">mv</span>
+                <p><strong>Déplacer/Renommer</strong> - Move</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span class="terminal-command">mv
+                        ancien.txt nouveau.txt</span>
+                </div>
+            </div>
+
+            <div class="command-card">
+                <span class="command-name">rm</span>
+                <p><strong>Supprimer un fichier</strong> - Remove (⚠️ Attention, pas de corbeille !)</p>
+                <div class="terminal">
+                    <span class="terminal-prompt">utilisateur@linux:~$</span> <span class="terminal-command">rm
+                        fichier.txt</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">2</span> Associez les commandes</h3>
+            <p style="margin-bottom: 15px;">Cliquez sur une commande, puis sur sa description correspondante :</p>
+
+            <div class="match-container" id="matchGame">
+                <div class="match-item" data-type="cmd" data-id="1" onclick="selectMatch(this)">ls -l</div>
+                <div class="match-item" data-type="desc" data-id="1" onclick="selectMatch(this)">Lister avec détails
+                </div>
+
+                <div class="match-item" data-type="cmd" data-id="2" onclick="selectMatch(this)">cd ~</div>
+                <div class="match-item" data-type="desc" data-id="2" onclick="selectMatch(this)">Retour à la maison
+                </div>
+
+                <div class="match-item" data-type="cmd" data-id="3" onclick="selectMatch(this)">rm -r</div>
+                <div class="match-item" data-type="desc" data-id="3" onclick="selectMatch(this)">Supprimer un dossier
+                </div>
+
+                <div class="match-item" data-type="cmd" data-id="4" onclick="selectMatch(this)">cp -r</div>
+                <div class="match-item" data-type="desc" data-id="4" onclick="selectMatch(this)">Copier un dossier</div>
+            </div>
+
+            <div id="matchResult" class="result"></div>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">3</span> Pratique : Écrivez les commandes</h3>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>Situation 1 :</strong> Vous voulez créer un dossier nommé "MesProjets"</p>
+                <input type="text" class="practice-input" id="cmd1" placeholder="Tapez votre commande ici...">
+                <button class="btn" onclick="checkCommand(1, 'mkdir MesProjets')">Vérifier</button>
+                <div id="result1" class="result"></div>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>Situation 2 :</strong> Vous voulez afficher le contenu du dossier actuel</p>
+                <input type="text" class="practice-input" id="cmd2" placeholder="Tapez votre commande ici...">
+                <button class="btn" onclick="checkCommand(2, 'ls')">Vérifier</button>
+                <div id="result2" class="result"></div>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>Situation 3 :</strong> Vous voulez aller dans le dossier "Documents"</p>
+                <input type="text" class="practice-input" id="cmd3" placeholder="Tapez votre commande ici...">
+                <button class="btn" onclick="checkCommand(3, 'cd Documents')">Vérifier</button>
+                <div id="result3" class="result"></div>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>Situation 4 :</strong> Vous voulez copier "rapport.txt" vers "rapport_copie.txt"</p>
+                <input type="text" class="practice-input" id="cmd4" placeholder="Tapez votre commande ici...">
+                <button class="btn" onclick="checkCommand(4, 'cp rapport.txt rapport_copie.txt')">Vérifier</button>
+                <div id="result4" class="result"></div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 Félicitations !</h3>
+            <p>Vous connaissez maintenant les commandes de base pour naviguer et manipuler des fichiers. Avec la
+                pratique, ces commandes deviendront naturelles !</p>
+            <div class="hint" style="margin-top: 15px;">
+                <strong>Astuce pro :</strong> Utilisez la touche TAB pour l'auto-complétion et les flèches ↑↓ pour
+                rappeler les commandes précédentes !
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+
+    <script>
+        let selectedCmd = null;
+        let selectedDesc = null;
+        let matchedPairs = [];
+
+        function selectMatch(element) {
+            const type = element.getAttribute('data-type');
+            const id = element.getAttribute('data-id');
+
+            if (matchedPairs.includes(id)) return;
+
+            if (type === 'cmd') {
+                if (selectedCmd) selectedCmd.classList.remove('selected');
+                selectedCmd = element;
+                element.classList.add('selected');
+            } else {
+                if (selectedDesc) selectedDesc.classList.remove('selected');
+                selectedDesc = element;
+                element.classList.add('selected');
+            }
+
+            if (selectedCmd && selectedDesc) {
+                const cmdId = selectedCmd.getAttribute('data-id');
+                const descId = selectedDesc.getAttribute('data-id');
+                const result = document.getElementById('matchResult');
+
+                if (cmdId === descId) {
+                    result.className = 'result correct';
+                    result.textContent = '✅ Parfait ! Bonne association.';
+                    matchedPairs.push(cmdId);
+                    selectedCmd.style.opacity = '0.5';
+                    selectedDesc.style.opacity = '0.5';
+
+                    if (matchedPairs.length === 4) {
+                        setTimeout(() => {
+                            result.textContent = '🎉 Bravo ! Vous avez tout associé correctement !';
+                        }, 500);
+                    }
+                } else {
+                    result.className = 'result incorrect';
+                    result.textContent = '❌ Pas la bonne association, réessayez !';
+                }
+                result.style.display = 'block';
+
+                selectedCmd.classList.remove('selected');
+                selectedDesc.classList.remove('selected');
+                selectedCmd = null;
+                selectedDesc = null;
+            }
+        }
+
+        function checkCommand(num, expected) {
+            const input = document.getElementById('cmd' + num).value.trim();
+            const result = document.getElementById('result' + num);
+
+            if (!input) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez entrer une commande';
+                return;
+            }
+
+            if (input === expected) {
+                result.className = 'result correct';
+                result.textContent = '✅ Excellent ! Commande correcte.';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = `❌ Pas tout à fait. La bonne commande est : ${expected}`;
+            }
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

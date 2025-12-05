@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le système de fichiers - Activités pratiques</title>
+    <link rel="stylesheet" href="./public/stylesystemefichier.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📁 Le système de fichiers Linux</h1>
+        <p class="subtitle">Apprenez à naviguer dans l'arborescence Linux</p>
+
+        <div class="info-box">
+            <h3>💡 Comment fonctionne le système de fichiers ?</h3>
+            <p>Sous Linux, tout commence à la racine <strong>/</strong>. Contrairement à Windows (C:\, D:\), Linux
+                organise tous les fichiers dans une seule arborescence. Chaque dossier a un rôle spécifique !</p>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">1</span> Découvrez l'arborescence</h3>
+            <div class="tree-structure">
+                /<br>
+                ├── home/ (Dossiers des utilisateurs)<br>
+                │ └── utilisateur/<br>
+                ├── etc/ (Fichiers de configuration)<br>
+                ├── var/ (Données variables : logs, cache)<br>
+                ├── usr/ (Applications et programmes)<br>
+                ├── tmp/ (Fichiers temporaires)<br>
+                └── bin/ (Commandes essentielles)<br>
+            </div>
+            <p style="color: #666; margin-top: 15px;"><em>Cliquez sur les dossiers ci-dessous pour en savoir plus !</em>
+            </p>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">2</span> Associez les dossiers à leur fonction</h3>
+            <div class="folder-item"
+                onclick="toggleInfo(this, '/home', 'Contient les dossiers personnels de tous les utilisateurs')">
+                <span class="folder-icon">🏠</span><strong>/home</strong> - Cliquez pour découvrir
+            </div>
+            <div class="folder-item"
+                onclick="toggleInfo(this, '/etc', 'Contient les fichiers de configuration du système')">
+                <span class="folder-icon">⚙️</span><strong>/etc</strong> - Cliquez pour découvrir
+            </div>
+            <div class="folder-item"
+                onclick="toggleInfo(this, '/var', 'Contient les fichiers qui changent fréquemment (logs, emails)')">
+                <span class="folder-icon">📊</span><strong>/var</strong> - Cliquez pour découvrir
+            </div>
+            <div class="folder-item"
+                onclick="toggleInfo(this, '/tmp', 'Stocke les fichiers temporaires, vidé au redémarrage')">
+                <span class="folder-icon">⏱️</span><strong>/tmp</strong> - Cliquez pour découvrir
+            </div>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">3</span> Comprendre les chemins</h3>
+            <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                <p><strong>Où se trouve le fichier "photo.jpg" de l'utilisateur "alice" ?</strong></p>
+                <input type="text" class="path-input" id="pathAnswer"
+                    placeholder="Tapez le chemin complet (ex: /dossier/sous-dossier/fichier)">
+                <p style="margin-top: 10px; color: #666; font-size: 0.9em;">💡 Indice : Commencez par /home/...</p>
+                <button class="btn" onclick="checkPath()">Vérifier</button>
+                <div id="pathResult" class="result"></div>
+            </div>
+        </div>
+
+        <div class="activity">
+            <h3><span class="activity-icon">4</span> Chemins absolus vs relatifs</h3>
+            <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                <p style="margin-bottom: 15px;"><strong>Quelle est la différence ?</strong></p>
+                <div style="display: grid; gap: 15px;">
+                    <div
+                        style="background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #4caf50;">
+                        <strong>Chemin absolu :</strong> /home/alice/Documents/rapport.txt<br>
+                        <em style="color: #666;">→ Démarre toujours de la racine /</em>
+                    </div>
+                    <div
+                        style="background: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #2196F3;">
+                        <strong>Chemin relatif :</strong> Documents/rapport.txt<br>
+                        <em style="color: #666;">→ Par rapport à votre position actuelle</em>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px;"><strong>Quiz :</strong> Vous êtes dans /home/alice. Quel chemin utiliser ?
+                </p>
+                <label
+                    style="display: block; padding: 10px; margin: 8px 0; background: #f5f5f5; border-radius: 6px; cursor: pointer;">
+                    <input type="radio" name="pathType" value="absolute" style="margin-right: 10px;">
+                    /home/alice/Documents/photo.jpg (absolu)
+                </label>
+                <label
+                    style="display: block; padding: 10px; margin: 8px 0; background: #f5f5f5; border-radius: 6px; cursor: pointer;">
+                    <input type="radio" name="pathType" value="relative" style="margin-right: 10px;">
+                    Documents/photo.jpg (relatif)
+                </label>
+                <label
+                    style="display: block; padding: 10px; margin: 8px 0; background: #f5f5f5; border-radius: 6px; cursor: pointer;">
+                    <input type="radio" name="pathType" value="both" style="margin-right: 10px;">
+                    Les deux fonctionnent !
+                </label>
+                <button class="btn" onclick="checkPathType()">Vérifier</button>
+                <div id="pathTypeResult" class="result"></div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 Bien joué !</h3>
+            <p>Vous comprenez maintenant la structure du système de fichiers Linux. Prêt à apprendre les commandes pour
+                y naviguer ?</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+
+    <script>
+        function toggleInfo(element, folder, description) {
+            const existing = element.querySelector('.description');
+            if (existing) {
+                existing.remove();
+            } else {
+                const desc = document.createElement('div');
+                desc.className = 'description';
+                desc.style.marginTop = '10px';
+                desc.style.padding = '10px';
+                desc.style.background = '#e8f5e9';
+                desc.style.borderRadius = '6px';
+                desc.style.color = '#2e7d32';
+                desc.innerHTML = `<strong>✓</strong> ${description}`;
+                element.appendChild(desc);
+            }
+        }
+
+        function checkPath() {
+            const answer = document.getElementById('pathAnswer').value.trim();
+            const result = document.getElementById('pathResult');
+
+            if (!answer) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez entrer un chemin';
+                return;
+            }
+
+            const correct = ['/home/alice/photo.jpg', '/home/alice/Images/photo.jpg', '/home/alice/Pictures/photo.jpg'];
+            const isCorrect = answer.startsWith('/home/alice/') && answer.endsWith('photo.jpg');
+
+            if (isCorrect) {
+                result.className = 'result correct';
+                result.textContent = '✅ Excellent ! Le fichier se trouve bien dans le dossier personnel d\'alice.';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = '❌ Pas tout à fait. Le chemin doit commencer par /home/alice/ et se terminer par photo.jpg';
+            }
+            result.style.display = 'block';
+        }
+
+        function checkPathType() {
+            const selected = document.querySelector('input[name="pathType"]:checked');
+            const result = document.getElementById('pathTypeResult');
+
+            if (!selected) {
+                result.className = 'result incorrect';
+                result.style.display = 'block';
+                result.textContent = '❌ Veuillez sélectionner une réponse';
+                return;
+            }
+
+            if (selected.value === 'both') {
+                result.className = 'result correct';
+                result.textContent = '✅ Parfait ! Les deux chemins fonctionnent. L\'absolu fonctionne toujours, le relatif est plus court quand vous êtes au bon endroit.';
+            } else {
+                result.className = 'result incorrect';
+                result.textContent = '❌ Réessayez ! Depuis /home/alice, les deux types de chemins permettent d\'accéder au fichier.';
+            }
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

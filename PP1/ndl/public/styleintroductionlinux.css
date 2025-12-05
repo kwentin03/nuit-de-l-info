@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.activity {
+    background: #f8f9fa;
+    border-left: 5px solid #667eea;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.activity:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.activity h3 {
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.activity-icon {
+    background: #667eea;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.question {
+    background: white;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.option {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f0f0f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.option:hover {
+    background: #667eea;
+    color: white;
+    transform: translateX(5px);
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+.btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #764ba2;
+    transform: scale(1.05);
+}
+
+.result {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+}
+
+.correct {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #c3e6cb;
+}
+
+.incorrect {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+.info-box {
+    background: #e7f3ff;
+    border-left: 5px solid #2196F3;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    color: #764ba2;
+    transform: translateX(-5px);
+}
