@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -10,30 +10,30 @@
     <div class="container">
         <header>
             <h1>Bienvenue sur mon site</h1>
-            <p class="subtitle">Développeur passionné par la création web</p>
+            <p class="subtitle">DÃ©veloppeur passionnÃ© par la crÃ©ation web</p>
         </header>
 
         <div class="content">
-            <h2>À propos</h2>
-            <p>Bonjour ! Je suis développeur web et j'adore créer des expériences interactives. 
-            Ce site contient peut-être quelques surprises... 🐍</p>
+            <h2>Ã€ propos</h2>
+            <p>Bonjour ! Je suis dÃ©veloppeur web et j'adore crÃ©er des expÃ©riences interactives. 
+            Ce site contient peut-Ãªtre quelques surprises... ðŸ</p>
             <p style="margin-top: 20px;">
-                <span class="snake-emoji" onclick="activateSnake()">🐍</span>
+                <span class="snake-emoji" onclick="activateSnake()">ðŸ</span>
                 Cliquez sur le serpent si vous osez !
             </p>
         </div>
 
         <div class="content">
-            <h2>Mes compétences</h2>
+            <h2>Mes compÃ©tences</h2>
             <ul style="list-style: none; padding-left: 0;">
-                <li>✓ HTML5 & CSS3</li>
-                <li>✓ JavaScript</li>
-                <li>✓ Développement de jeux cachés 🎮</li>
+                <li>âœ“ HTML5 & CSS3</li>
+                <li>âœ“ JavaScript</li>
+                <li>âœ“ DÃ©veloppement de jeux cachÃ©s ðŸŽ®</li>
             </ul>
         </div>
 
         <footer>
-            <p>&copy; 2025 - Tous droits réservés</p>
+            <p>&copy; 2025 - Tous droits rÃ©servÃ©s</p>
         </footer>
     </div>
 
@@ -45,6 +45,17 @@
         <button id="closeGame" onclick="closeGame()">Fermer le jeu</button>
     </div>
 
-    <script src="snake.js"></script>
+    <!-- Floating snake: apparaÃ®t au scroll, suit la souris, bulle et clique pour lancer le jeu -->
+    <div id="floatingSnake" aria-hidden="true">
+      <span id="floatingSnakeIcon" role="button" title="Cliquer pour jouer">ðŸ</span>
+      <div id="snakeBubble">tu veut me tester ?</div>
+    </div>
+
+    <!-- Floating snake: apparaît au scroll, suit la souris, bulle et clic pour lancer le jeu -->
+<div id="floatingSnake" aria-hidden="true">
+  <span id="floatingSnakeIcon" role="button" title="Cliquer pour jouer"></span>
+  <div id="snakeBubble">tu veut me tester ?</div>
+</div>
+<script src="snake.js"></script>
 </body>
 </html>
