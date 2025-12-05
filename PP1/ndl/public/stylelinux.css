@@ -121,3 +121,7 @@ nav a:hover {
     border-color: #32ffc6;
     background: #f9f9f9;
 }
+
+.snake-emoji:hover {
+            transform: scale(1.2) rotate(10deg);
+        }

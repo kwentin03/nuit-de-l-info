@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/snake.css">
     <title>NIRD</title>
 </head>
 
@@ -50,6 +51,11 @@
 
         <div id="terminal" class="section">
             <h2>Mini systeme Linux</h2>
+
+            <p style="margin-top: 20px;">
+                <span class="snake-emoji" onclick="activateSnake()">🐍</span>
+            </p>
+
             <div class="terminal">
                 <div class="terminal-output" id="output">Bienvenue dans le mini systeme Linux simulé.\nTapez "help" pour
                     commencer.</div>
@@ -61,8 +67,17 @@
             </div>
         </div>
 
-    </div>
+        <!-- Hidden Snake Game -->
+        <div id="gameContainer">
+            <div id="score">Score: 0</div>
+            <canvas id="snakeCanvas" width="400" height="400"></canvas>
+            <div id="gameOverText" class="game-over" style="display: none;">Game Over! Appuyez sur Espace pour rejouer
+            </div>
+            <button id="closeGame" onclick="closeGame()">Fermer le jeu</button>
+        </div>
 
+    </div>
+    <script src="./public/js/snake.js"></script>
     <script>
         function runCommand(e) {
             if (e.key === "Enter") {
