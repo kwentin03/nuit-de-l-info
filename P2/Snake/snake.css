@@ -41,16 +41,53 @@
             margin-bottom: 30px;
         }
 
+        /* Emoji used as a trigger (code/terminal style) */
         .snake-emoji {
-            font-size: 2em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            font-size: 22px;
+            line-height: 1;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.45);   /* fond semi-transparent pour ressembler à un terminal */
+            color: #9be15d;                 /* vert "terminal" */
+            border: 1px solid rgba(155,225,93,0.18);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
             cursor: pointer;
-            display: inline-block;
-            transition: transform 0.3s;
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .snake-emoji:hover {
-            transform: scale(1.2) rotate(10deg);
+        /* variant for small inline use (optional) */
+        .snake-emoji.small {
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+        }
+
+        /* hover / active states */
+        .snake-emoji:hover,
+        .snake-emoji:focus {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+            background: rgba(0,0,0,0.6);
+            outline: none;
+        }
+
+        /* keyboard accessibility */
+        .snake-emoji:focus {
+            box-shadow: 0 0 0 3px rgba(155,225,93,0.16), 0 10px 26px rgba(0,0,0,0.45);
+        }
+
+        /* small label near it (optional) */
+        .snake-emoji + .emoji-label {
+            margin-left: 8px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            vertical-align: middle;
         }
 
         footer {

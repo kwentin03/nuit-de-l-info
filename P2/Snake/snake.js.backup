@@ -1,4 +1,4 @@
-﻿let gameActive = false;
+let gameActive = false;
 let snake = [{x: 10, y: 10}];
 let direction = {x: 0, y: 0};
 let food = {x: 15, y: 15};
@@ -128,3 +128,76 @@ document.addEventListener('keydown', (e) => {
         direction = {x: 1, y: 0};
     }
 });
+
+// -- floating snake script --
+// Apparition au scroll, suit la souris, rotation selon direction, bulle et clic pour lancer le jeu
+(function(){
+    // créer la fonctionnalité seulement si les éléments existent
+    const snakeEl = document.getElementById('floatingSnake');
+    if (!snakeEl) return;
+    const icon = document.getElementById('floatingSnakeIcon');
+    const bubble = document.getElementById('snakeBubble');
+
+    let hideTimer = null;
+    let rafId = null;
+    let lastX = window.innerWidth / 2;
+    let lastY = window.innerHeight / 2;
+    const target = { x: lastX, y: lastY, angle: 0, scale: 1 };
+
+    function showTemporary() {
+        snakeEl.classList.add('active');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+            snakeEl.classList.remove('active');
+            snakeEl.classList.remove('grow');
+        }, 2500);
+    }
+
+    window.addEventListener('scroll', () => {
+        showTemporary();
+    }, { passive: true });
+
+    window.addEventListener('mousemove', (e) => {
+        showTemporary();
+        const x = e.clientX;
+        const y = e.clientY;
+        const dx = x - lastX;
+        const dy = y - lastY;
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        target.x = x;
+        target.y = y;
+        target.angle = angle;
+        lastX = x;
+        lastY = y;
+        if (!rafId) rafId = requestAnimationFrame(render);
+    }, { passive: true });
+
+    function render() {
+        rafId = null;
+        const tx = target.x;
+        const ty = target.y;
+        const ang = target.angle;
+        const sc = target.scale;
+        snakeEl.style.left = tx + 'px';
+        snakeEl.style.top = ty + 'px';
+        snakeEl.style.transform = `translate(-50%, -50%) rotate(${ang}deg) scale(${sc})`;
+    }
+
+    // Hover: agrandir et afficher bulle
+    snakeEl.addEventListener('mouseenter', () => {
+        snakeEl.classList.add('grow');
+        target.scale = 1.6;
+        snakeEl.classList.add('active');
+        clearTimeout(hideTimer);
+    });
+    snakeEl.addEventListener('mouseleave', () => {
+        snakeEl.classList.remove('grow');
+        target.scale = 1;
+    });
+
+    // Clic: lance le mini-jeu si la fonction existe
+    icon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (typeof activateSnake === 'function') activateSnake();
+    });
+})();
