@@ -1,0 +1,463 @@
+/* ===================================
+   NIRD - Style Rétro 2000s + 8bit + Doctor Who
+   =================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+   
+   body {
+       background: #001a33;
+       background-image: 
+           radial-gradient(circle at 20% 50%, rgba(0, 150, 255, 0.1) 0%, transparent 50%),
+           radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+           radial-gradient(circle at 40% 80%, rgba(0, 150, 255, 0.1) 0%, transparent 50%),
+           repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0, 150, 255, 0.03) 10deg, transparent 20deg);
+       background-size: 100% 100%, 100% 100%, 100% 100%, 100px 100px;
+       color: #0096ff;
+       font-family: 'VT323', monospace;
+       font-size: 20px;
+       min-height: 100vh;
+       position: relative;
+       overflow-x: hidden;
+   }
+   
+   /* Animation vortex temporel */
+   body::before {
+       content: '';
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-image: 
+           radial-gradient(circle at center, transparent 0%, rgba(0, 150, 255, 0.1) 50%, transparent 100%),
+           conic-gradient(from 0deg at 50% 50%, transparent, rgba(255, 140, 0, 0.1), transparent 180deg);
+       opacity: 0.3;
+       animation: time-vortex 30s linear infinite;
+       pointer-events: none;
+       z-index: 0;
+   }
+   
+   @keyframes time-vortex {
+       0% { transform: rotate(0deg) scale(1); }
+       50% { transform: rotate(180deg) scale(1.1); }
+       100% { transform: rotate(360deg) scale(1); }
+   }
+   
+   /* Header */
+   header {
+       background: linear-gradient(180deg, #003366 0%, #0059b3 50%, #003366 100%);
+       border: 3px solid #0096ff;
+       border-radius: 20px;
+       margin: 20px;
+       padding: 30px;
+       text-align: center;
+       box-shadow: 
+           0 0 20px #0096ff,
+           inset 0 0 20px rgba(0, 150, 255, 0.2),
+           0 0 40px rgba(255, 140, 0, 0.3);
+       animation: tardis-pulse 2s ease-in-out infinite;
+       position: relative;
+       z-index: 1;
+   }
+   
+   @keyframes tardis-pulse {
+       0%, 100% { 
+           box-shadow: 0 0 20px #0096ff, inset 0 0 20px rgba(0, 150, 255, 0.2), 0 0 40px rgba(255, 140, 0, 0.3);
+       }
+       50% { 
+           box-shadow: 0 0 30px #0096ff, inset 0 0 30px rgba(0, 150, 255, 0.3), 0 0 60px rgba(255, 140, 0, 0.5);
+       }
+   }
+   
+   header h1 {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 2.5em;
+       color: #ff8c00;
+       text-shadow: 
+           0 0 10px #ff8c00,
+           0 0 20px #0096ff,
+           0 0 30px #0096ff,
+           2px 2px 0px #003366;
+       margin-bottom: 20px;
+       letter-spacing: 3px;
+       animation: tardis-flicker 3s infinite;
+   }
+   
+   @keyframes tardis-flicker {
+       0%, 100% { opacity: 1; color: #ff8c00; }
+       41%, 43% { opacity: 0.8; color: #0096ff; }
+       42% { opacity: 0.9; color: #ff8c00; }
+   }
+   
+   /* Navigation */
+   nav {
+       display: flex;
+       justify-content: center;
+       gap: 20px;
+       flex-wrap: wrap;
+   }
+   
+   nav a {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 0.8em;
+       color: #0096ff;
+       text-decoration: none;
+       padding: 15px 25px;
+       background: #001a33;
+       border: 2px solid #0096ff;
+       border-radius: 10px;
+       transition: all 0.3s ease;
+       box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+       position: relative;
+       overflow: hidden;
+   }
+   
+   nav a::before {
+       content: '▶';
+       position: absolute;
+       left: -20px;
+       transition: left 0.3s ease;
+       color: #ff8c00;
+   }
+   
+   nav a:hover {
+       background: linear-gradient(135deg, #0096ff 0%, #ff8c00 100%);
+       color: #ffffff;
+       transform: scale(1.1);
+       box-shadow: 
+           0 0 20px #0096ff,
+           0 0 30px #ff8c00;
+   }
+   
+   nav a:hover::before {
+       left: 5px;
+       color: #ffffff;
+   }
+   
+   /* Container */
+   .container {
+       max-width: 1200px;
+       margin: 0 auto;
+       padding: 20px;
+       position: relative;
+       z-index: 1;
+   }
+   
+   /* Sections */
+   .section {
+       background: linear-gradient(135deg, #001a33 0%, #003366 50%, #001a33 100%);
+       border: 3px solid #0096ff;
+       border-radius: 15px;
+       padding: 30px;
+       margin: 30px 0;
+       box-shadow: 
+           0 0 15px rgba(0, 150, 255, 0.5),
+           inset 0 0 30px rgba(0, 150, 255, 0.1),
+           0 0 25px rgba(255, 140, 0, 0.2);
+       position: relative;
+   }
+   
+   .section::before {
+       content: '◉ ◉ ◉';
+       position: absolute;
+       top: 10px;
+       left: 10px;
+       font-family: 'Press Start 2P', cursive;
+       font-size: 0.8em;
+       color: rgba(255, 140, 0, 0.5);
+   }
+   
+   .section h2 {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 1.8em;
+       color: #ff8c00;
+       text-shadow: 
+           0 0 10px #ff8c00,
+           0 0 20px #0096ff,
+           2px 2px 0px #003366;
+       margin-bottom: 20px;
+       border-bottom: 3px dashed #0096ff;
+       padding-bottom: 15px;
+   }
+   
+   .section p {
+       font-family: 'VT323', monospace;
+       font-size: 1.4em;
+       line-height: 1.6;
+       color: #0096ff;
+       text-shadow: 0 0 5px rgba(0, 150, 255, 0.5);
+   }
+   
+   /* Learn Grid */
+   .learn-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+       gap: 20px;
+       margin-top: 20px;
+   }
+   
+   .learn-card {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 0.8em;
+       background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+       border: 3px solid #0096ff;
+       border-radius: 10px;
+       padding: 30px 20px;
+       text-align: center;
+       text-decoration: none;
+       color: #0096ff;
+       transition: all 0.3s ease;
+       box-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
+       position: relative;
+       overflow: hidden;
+   }
+   
+   .learn-card::after {
+       content: '⟳';
+       position: absolute;
+       bottom: 10px;
+       right: 10px;
+       font-size: 1.2em;
+       color: #ff8c00;
+       opacity: 0;
+       transition: opacity 0.3s ease;
+   }
+   
+   .learn-card:hover {
+       background: linear-gradient(135deg, #0059b3 0%, #ff8c00 100%);
+       color: #ffffff;
+       transform: translateY(-5px) scale(1.05);
+       box-shadow: 
+           0 0 25px #0096ff,
+           0 0 35px rgba(255, 140, 0, 0.7);
+   }
+   
+   .learn-card:hover::after {
+       opacity: 1;
+       animation: time-spin 2s linear infinite;
+   }
+   
+   @keyframes time-spin {
+       0% { transform: rotate(0deg); }
+       100% { transform: rotate(360deg); }
+   }
+   
+   /* Terminal */
+   .terminal {
+       background: #000000;
+       border: 4px solid #0096ff;
+       border-radius: 10px;
+       padding: 20px;
+       font-family: 'VT323', monospace;
+       box-shadow: 
+           0 0 20px rgba(0, 150, 255, 0.6),
+           inset 0 0 50px rgba(0, 150, 255, 0.1),
+           0 0 30px rgba(255, 140, 0, 0.3);
+       margin-top: 20px;
+   }
+   
+   .terminal-output {
+       min-height: 200px;
+       color: #0096ff;
+       white-space: pre-wrap;
+       margin-bottom: 20px;
+       font-size: 1.3em;
+       line-height: 1.4;
+       text-shadow: 0 0 5px rgba(0, 150, 255, 0.8);
+       animation: tardis-scan 8s linear infinite;
+   }
+   
+   @keyframes tardis-scan {
+       0%, 100% { text-shadow: 0 0 5px rgba(0, 150, 255, 0.8); }
+       25% { text-shadow: 0 0 8px rgba(0, 150, 255, 1); }
+       50% { text-shadow: 0 0 5px rgba(255, 140, 0, 0.8); }
+       75% { text-shadow: 0 0 8px rgba(0, 150, 255, 1); }
+   }
+   
+   .terminal-input {
+       display: flex;
+       align-items: center;
+       gap: 10px;
+   }
+   
+   .terminal-input span {
+       color: #ff8c00;
+       font-size: 1.5em;
+       text-shadow: 0 0 10px #ff8c00;
+   }
+   
+   .terminal-input input {
+       flex: 1;
+       background: transparent;
+       border: none;
+       color: #0096ff;
+       font-family: 'VT323', monospace;
+       font-size: 1.3em;
+       outline: none;
+       text-shadow: 0 0 5px rgba(0, 150, 255, 0.8);
+   }
+   
+   .terminal-input input::placeholder {
+       color: rgba(0, 150, 255, 0.5);
+   }
+   
+   /* Snake Game */
+   .snake-emoji {
+       font-size: 3em;
+       cursor: pointer;
+       display: inline-block;
+       transition: transform 0.3s ease;
+       filter: drop-shadow(0 0 10px #0096ff) drop-shadow(0 0 15px #ff8c00);
+       animation: tardis-wiggle 1s ease-in-out infinite;
+   }
+   
+   @keyframes tardis-wiggle {
+       0%, 100% { transform: rotate(-5deg); filter: drop-shadow(0 0 10px #0096ff); }
+       50% { transform: rotate(5deg); filter: drop-shadow(0 0 15px #ff8c00); }
+   }
+   
+   .snake-emoji:hover {
+       transform: scale(1.2) rotate(10deg);
+       filter: drop-shadow(0 0 20px #0096ff) drop-shadow(0 0 25px #ff8c00);
+   }
+   
+   #gameContainer {
+       position: fixed;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+       border: 5px solid #0096ff;
+       border-radius: 15px;
+       padding: 30px;
+       display: none;
+       z-index: 1000;
+       box-shadow: 
+           0 0 50px rgba(0, 150, 255, 0.8),
+           inset 0 0 30px rgba(0, 150, 255, 0.2),
+           0 0 40px rgba(255, 140, 0, 0.5);
+   }
+   
+   #gameContainer.active {
+       display: block;
+       animation: tardis-popup 0.3s ease;
+   }
+   
+   @keyframes tardis-popup {
+       0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+       100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+   }
+   
+   #snakeCanvas {
+       border: 3px solid #0096ff;
+       background: #000000;
+       display: block;
+       box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), 0 0 30px rgba(255, 140, 0, 0.3);
+       image-rendering: pixelated;
+   }
+   
+   #score {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 1.2em;
+       color: #ff8c00;
+       text-align: center;
+       margin-bottom: 15px;
+       text-shadow: 0 0 10px #ff8c00, 0 0 20px #0096ff;
+   }
+   
+   #closeGame {
+       font-family: 'Press Start 2P', cursive;
+       font-size: 0.8em;
+       width: 100%;
+       margin-top: 15px;
+       padding: 15px;
+       background: #001a33;
+       color: #0096ff;
+       border: 3px solid #0096ff;
+       border-radius: 8px;
+       cursor: pointer;
+       transition: all 0.3s ease;
+       box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+   }
+   
+   #closeGame:hover {
+       background: linear-gradient(135deg, #0096ff 0%, #ff8c00 100%);
+       color: #ffffff;
+       box-shadow: 0 0 20px #0096ff, 0 0 30px #ff8c00;
+       transform: scale(1.05);
+   }
+   
+   .game-over {
+       font-family: 'Press Start 2P', cursive;
+       color: #ff0000;
+       text-align: center;
+       margin-top: 15px;
+       text-shadow: 0 0 10px #ff0000;
+       animation: blink 0.5s infinite;
+   }
+   
+   @keyframes blink {
+       0%, 100% { opacity: 1; }
+       50% { opacity: 0.5; }
+   }
+   
+   /* Scrollbar personnalisée */
+   ::-webkit-scrollbar {
+       width: 12px;
+   }
+   
+   ::-webkit-scrollbar-track {
+       background: #001a33;
+       border-left: 2px solid #0096ff;
+   }
+   
+   ::-webkit-scrollbar-thumb {
+       background: linear-gradient(180deg, #0096ff 0%, #ff8c00 100%);
+       border-radius: 6px;
+       box-shadow: 0 0 10px #0096ff;
+   }
+   
+   ::-webkit-scrollbar-thumb:hover {
+       background: linear-gradient(180deg, #ff8c00 0%, #0096ff 100%);
+       box-shadow: 0 0 20px #ff8c00;
+   }
+   
+   /* Responsive */
+   @media (max-width: 768px) {
+       header h1 {
+           font-size: 1.5em;
+       }
+       
+       nav {
+           flex-direction: column;
+       }
+       
+       nav a {
+           font-size: 0.7em;
+       }
+       
+       .section h2 {
+           font-size: 1.3em;
+       }
+       
+       .learn-grid {
+           grid-template-columns: 1fr;
+       }
+   }
+   
+   /* Easter egg - Time Vortex effect */
+   body.konami {
+       animation: time-vortex-rainbow 2s linear infinite;
+   }
+   
+   @keyframes time-vortex-rainbow {
+       0% { filter: hue-rotate(0deg) brightness(1); }
+       50% { filter: hue-rotate(180deg) brightness(1.2); }
+       100% { filter: hue-rotate(360deg) brightness(1); }
+   }

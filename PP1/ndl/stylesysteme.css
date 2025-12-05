@@ -1,0 +1,329 @@
+/* ===================================
+   Système de Fichiers - Style Années 2000
+   =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #00ccff;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 100px),
+        repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,255,255,0.1) 50px, rgba(255,255,255,0.1) 100px),
+        linear-gradient(135deg, #00ccff 0%, #9966ff 50%, #ff6699 100%);
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    background: #ffffe6;
+    border: 7px ridge #ff9900;
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: 
+        0 0 0 4px #ffcc00,
+        0 0 0 8px #ff6699,
+        0 0 0 12px #9966ff,
+        15px 15px 40px rgba(0,0,0,0.6);
+}
+
+h1 {
+    text-align: center;
+    font-size: 3.5em;
+    color: #ff6600;
+    text-shadow: 
+        3px 3px 0 #ffcc00,
+        6px 6px 0 #00ccff,
+        9px 9px 15px rgba(0,0,0,0.4);
+    margin-bottom: 15px;
+    font-weight: 700;
+    animation: color-shift 4s ease-in-out infinite;
+}
+
+@keyframes color-shift {
+    0%, 100% { color: #ff6600; }
+    33% { color: #0066ff; }
+    66% { color: #cc00cc; }
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.4em;
+    color: #0066cc;
+    margin-bottom: 30px;
+    font-style: italic;
+    background: linear-gradient(to right, transparent, #ccccff, transparent);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.info-box {
+    background: linear-gradient(135deg, #ffcccc 0%, #ccffff 50%, #ffffcc 100%);
+    border: 5px double #ff6699;
+    border-radius: 25px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 
+        inset 0 0 30px rgba(255,255,255,0.6),
+        8px 8px 20px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+.info-box::before {
+    content: '★';
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 2em;
+    color: #ff6600;
+    text-shadow: 2px 2px 0 #ffcc00;
+}
+
+.info-box h3 {
+    color: #cc0066;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-decoration: underline wavy #ff99cc;
+}
+
+.info-box p {
+    color: #333;
+    font-size: 1.15em;
+    line-height: 1.7;
+}
+
+.activity {
+    background: linear-gradient(to bottom, #ccffcc 0%, #ccccff 100%);
+    border: 6px outset #66cc99;
+    border-radius: 25px;
+    padding: 30px;
+    margin: 35px 0;
+    box-shadow: 8px 8px 0 #339966;
+    transition: all 0.3s ease;
+}
+
+.activity:hover {
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 20px rgba(51,153,102,0.5);
+}
+
+.activity h3 {
+    color: #006699;
+    font-size: 2em;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+}
+
+.activity-icon {
+    background: linear-gradient(135deg, #ff9933 0%, #ffcc00 100%);
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    border: 4px solid white;
+    box-shadow: 
+        0 0 0 3px #ff6600,
+        5px 5px 15px rgba(0,0,0,0.4);
+    animation: pulse-grow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-grow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.tree-structure {
+    background: #002200;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    padding: 25px;
+    border: 5px inset #006600;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 
+        inset 0 0 30px rgba(0,255,0,0.2),
+        5px 5px 20px rgba(0,0,0,0.5);
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+.folder-item {
+    background: linear-gradient(to right, #ffff99 0%, #ccffcc 100%);
+    border: 4px solid #99cc00;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 15px 0;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 #669900;
+}
+
+.folder-item:hover {
+    background: linear-gradient(to right, #ffff66 0%, #99ff99 100%);
+    transform: translateX(10px);
+    box-shadow: 6px 6px 15px rgba(153,204,0,0.5);
+}
+
+.folder-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.description {
+    margin-top: 10px;
+    padding: 12px;
+    background: linear-gradient(135deg, #e6ffe6 0%, #e6f2ff 100%);
+    border-radius: 10px;
+    color: #006600;
+    border-left: 5px solid #00cc00;
+}
+
+.path-input {
+    width: 100%;
+    padding: 15px;
+    border: 5px groove #6699ff;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(to bottom, #ffffff 0%, #e6f3ff 100%);
+    margin: 15px 0;
+}
+
+.path-input:focus {
+    outline: none;
+    border-color: #ff6699;
+    box-shadow: 0 0 20px rgba(255,102,153,0.6);
+    background: #ffffcc;
+}
+
+.btn {
+    background: linear-gradient(180deg, #ff6699 0%, #cc3366 100%);
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 15px 35px;
+    border: 4px outset #ff99cc;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 6px 6px 0 #990033;
+    transition: all 0.2s ease;
+    font-family: 'Comic Neue', cursive;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(180deg, #ff99cc 0%, #ff3366 100%);
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 #990033;
+}
+
+.btn:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 #990033;
+}
+
+.result {
+    display: none;
+    padding: 18px;
+    margin-top: 15px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 4px solid;
+    animation: slide-in 0.5s ease;
+}
+
+@keyframes slide-in {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.result.correct {
+    background: linear-gradient(135deg, #ccffcc 0%, #99ff99 100%);
+    color: #006600;
+    border-color: #00cc00;
+    box-shadow: 0 0 30px rgba(0,255,0,0.6);
+}
+
+.result.incorrect {
+    background: linear-gradient(135deg, #ffcccc 0%, #ff9999 100%);
+    color: #990000;
+    border-color: #ff0000;
+    box-shadow: 0 0 30px rgba(255,0,0,0.6);
+}
+
+.back-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #9966ff 0%, #cc66ff 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border: 4px outset #cc99ff;
+    border-radius: 15px;
+    margin-top: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 6px 6px 0 #6633cc;
+    transition: all 0.2s ease;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.back-link:hover {
+    background: linear-gradient(135deg, #cc99ff 0%, #ff99ff 100%);
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 #6633cc;
+}
+
+/* Labels radio personnalisés */
+label[style*="display: block"] {
+    background: linear-gradient(to right, #ffccff 0%, #ccffff 100%) !important;
+    border: 3px solid #9966ff !important;
+    transition: all 0.3s ease;
+}
+
+label[style*="display: block"]:hover {
+    background: linear-gradient(to right, #ff99ff 0%, #99ffff 100%) !important;
+    transform: scale(1.02);
+    box-shadow: 3px 3px 10px rgba(153,102,255,0.4);
+}
+
+/* Styles pour divs avec style inline */
+div[style*="background: white"] {
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffee 100%) !important;
+    border: 4px groove #ffcc99 !important;
+}
+
+div[style*="background: #e8f5e9"],
+div[style*="background: #e3f2fd"] {
+    border: 3px solid !important;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Effet de brillance */
+strong {
+    color: #cc0066;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+em {
+    color: #666;
+    font-style: italic;
+}
